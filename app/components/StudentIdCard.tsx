@@ -5,7 +5,15 @@ const StudentIdCard = () => {
   return (
     <div className="relative w-[600px] h-[350px] bg-white text-black shadow-xl overflow-hidden font-serif">
         {/* Watermark/Background */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none z-0">
+        <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+            {/* Character - Right side, large */}
+            <div className="absolute top-20 right-25 w-[210px] h-[210px]">
+                <Image src="/flashami_logo_character.png" alt="Flashami Character" fill className="object-contain opacity-80" />
+            </div>
+            {/* Title - Bottom Right */}
+            <div className="absolute bottom-2 right-30 w-48 h-12">
+                 <Image src="/flashami_logo_title.png" alt="Flashami Title" fill className="object-contain" />
+            </div>
         </div>
 
       {/* Header */}
@@ -62,10 +70,10 @@ const StudentIdCard = () => {
 
       {/* Footer */}
       <div className="absolute bottom-2 right-8 text-right z-10 pointer-events-none">
-        <p className="text-[0.6rem] text-gray-500 mb-1 tracking-tighter">
+        <p className="text-[0.6rem] text-gray-500 tracking-tighter">
             上記のものは、本学の学生であることを証明する
         </p>
-        <div className="flex items-center justify-end gap-2">
+        <div className="flex items-center justify-end gap-1">
             <p className="font-bold text-lg text-gray-800">Flashami学園 &nbsp; 校長</p>
         </div>
       </div>
