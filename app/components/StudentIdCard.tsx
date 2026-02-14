@@ -27,7 +27,6 @@ const StudentIdCard = () => {
         {/* Photo Section */}
         <div className="shrink-0 w-44 h-44 relative">
           <div className="w-full h-full relative overflow-hidden shadow-md bg-gray-200">
-             {/* Using a placeholder if image fails, or the actual image */}
             <Image
               src="/member/morine.jpg"
               alt="Student Photo"
