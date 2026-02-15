@@ -4,9 +4,11 @@ import { Student } from "../utils/csv";
 
 interface StudentIdCardProps {
   student: Student;
+  priority?: boolean;
+  isExport?: boolean;
 }
 
-const StudentIdCard = ({ student }: StudentIdCardProps) => {
+const StudentIdCard = ({ student, priority = false, isExport = false }: StudentIdCardProps) => {
   // Construct image path. CSV has filename, we need /member/filename
   // Handle "kuro,jpg" case if it comes through strangely, but parser should handle it.
   // The user said "imageURL is public/member/filename".
@@ -25,11 +27,21 @@ const StudentIdCard = ({ student }: StudentIdCardProps) => {
         <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
             {/* Character - Right side, large */}
             <div className="absolute top-20 right-25 w-[210px] h-[210px]">
-                <Image src="/flashami_logo_character.png" alt="Flashami Character" fill className="object-contain opacity-80" />
+                {isExport ? (
+                    /* eslint-disable-next-line @next/next/no-img-element */
+                    <img src="/flashami_logo_character.png" alt="Flashami Character" className="object-contain opacity-80 w-full h-full" />
+                ) : (
+                    <Image src="/flashami_logo_character.png" alt="Flashami Character" fill className="object-contain opacity-80" priority={priority} />
+                )}
             </div>
             {/* Title - Bottom Right */}
             <div className="absolute bottom-2 right-30 w-48 h-12">
-                 <Image src="/flashami_logo_title.png" alt="Flashami Title" fill className="object-contain" />
+                {isExport ? (
+                    /* eslint-disable-next-line @next/next/no-img-element */
+                    <img src="/flashami_logo_title.png" alt="Flashami Title" className="object-contain w-full h-full" />
+                ) : (
+                    <Image src="/flashami_logo_title.png" alt="Flashami Title" fill className="object-contain" priority={priority} />
+                )}
             </div>
         </div>
 
@@ -44,12 +56,22 @@ const StudentIdCard = ({ student }: StudentIdCardProps) => {
         {/* Photo Section */}
         <div className="shrink-0 w-44 h-44 relative">
           <div className="w-full h-full relative overflow-hidden shadow-md bg-gray-200">
-            <Image
-              src={imagePath}
-              alt={`${student.name} Photo`}
-              fill
-              className="object-cover object-top"
-            />
+            {isExport ? (
+                /* eslint-disable-next-line @next/next/no-img-element */
+                <img 
+                    src={imagePath} 
+                    alt={`${student.name} Photo`} 
+                    className="object-cover object-top w-full h-full"
+                />
+            ) : (
+                <Image
+                src={imagePath}
+                alt={`${student.name} Photo`}
+                fill
+                className="object-cover object-top"
+                priority={priority}
+                />
+            )}
           </div>
         </div>
 
