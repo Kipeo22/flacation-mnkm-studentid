@@ -54,7 +54,7 @@ const StudentIdCard = ({ student, priority = false, isExport = false }: StudentI
       {/* Body */}
       <div className="flex p-8 gap-8 z-10 relative h-[calc(100%-4rem)] items-center">
         {/* Photo Section */}
-        <div className="shrink-0 w-44 h-44 relative">
+        <div className="shrink-0 w-40 h-52 relative">
           <div className="w-full h-full relative overflow-hidden shadow-md bg-gray-200">
             {isExport ? (
                 /* eslint-disable-next-line @next/next/no-img-element */
