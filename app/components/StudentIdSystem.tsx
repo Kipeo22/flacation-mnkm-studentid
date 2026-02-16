@@ -129,7 +129,7 @@ const StudentIdSystem = ({ initialMembers }: StudentIdSystemProps) => {
                 We keep the visible card using Next/Image for performance and quality in the UI. 
                 We DON'T use this for export anymore to avoid state/cache issues. 
             */}
-            <div className="transform transition-all duration-300 hover:scale-105 origin-center">
+            <div>
               <StudentIdCard key={selectedMember.name} student={selectedMember} />
             </div>
             <button

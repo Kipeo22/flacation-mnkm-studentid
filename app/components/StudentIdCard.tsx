@@ -29,9 +29,9 @@ const StudentIdCard = ({ student, priority = false, isExport = false }: StudentI
             <div className="absolute top-20 right-25 w-[210px] h-[210px]">
                 {isExport ? (
                     /* eslint-disable-next-line @next/next/no-img-element */
-                    <img src="/flashami_logo_character.png" alt="Flashami Character" className="object-contain opacity-80 w-full h-full" />
+                    <img src="/flashami_logo_character.png" alt="Flashami Character" className="object-contain opacity-60 w-full h-full" />
                 ) : (
-                    <Image src="/flashami_logo_character.png" alt="Flashami Character" fill className="object-contain opacity-80" priority={priority} />
+                    <Image src="/flashami_logo_character.png" alt="Flashami Character" fill className="object-contain opacity-60" priority={priority} />
                 )}
             </div>
             {/* Title - Bottom Right */}
@@ -46,13 +46,13 @@ const StudentIdCard = ({ student, priority = false, isExport = false }: StudentI
         </div>
 
       {/* Header */}
-      <div className="bg-[#EBC700] h-16 flex items-center justify-between px-8 z-10 relative">
+      <div className="h-16 flex items-center justify-between px-8 z-10 relative" style={{ backgroundColor: student.color || '#EBC700' }}>
         <h1 className="text-white text-3xl font-bold tracking-wider drop-shadow-sm">Flashami学園</h1>
         <h2 className="text-white text-2xl font-bold tracking-widest drop-shadow-sm">学生証</h2>
       </div>
 
       {/* Body */}
-      <div className="flex p-8 gap-8 z-10 relative h-[calc(100%-4rem)] items-center">
+      <div className="flex p-8 gap-8 z-10 relative h-[calc(100%-4rem)] items-start">
         {/* Photo Section */}
         <div className="shrink-0 w-40 h-52 relative">
           <div className="w-full h-full relative overflow-hidden shadow-md bg-gray-200">
@@ -76,7 +76,7 @@ const StudentIdCard = ({ student, priority = false, isExport = false }: StudentI
         </div>
 
         {/* Info Section */}
-        <div className="grow flex flex-col justify-center space-y-2 pl-2">
+        <div className="grow flex flex-col justify-start space-y-0.5 pl-2">
             <div className="grid grid-cols-[110px_1fr] items-baseline gap-2">
                 <span className="font-bold text-lg text-gray-800 whitespace-nowrap">ニックネーム</span>
                 <span className="text-2xl font-bold tracking-wide -mt-2 block">{student.name}</span>
@@ -97,10 +97,18 @@ const StudentIdCard = ({ student, priority = false, isExport = false }: StudentI
                 <span className="text-base font-bold">2026 年 02 月 16 日</span>
             </div>
 
-            <div className="grid grid-cols-[110px_1fr] items-start gap-2">
-                <span className="font-bold text-gray-800 whitespace-nowrap pt-1">特殊能力</span>
-                <div className="text-sl font-bold leading-tight min-h-14 flex items-center">
+            <div className="grid grid-cols-[110px_1fr] items-baseline gap-2">
+                <span className="font-bold text-gray-800 whitespace-nowrap">特殊能力</span>
+                <div className="text-sm font-bold leading-tight">
                   <span>{student.ability}</span>
+                  {student.hasTeamFlag && (
+                    <span 
+                        className="inline-flex items-center justify-center w-5 h-5 rounded-full border-[1px] text-[14px] bg-white shrink-0 ml-1 align-text-bottom" 
+                        style={{ borderColor: student.color || '#EBC700', color: student.color || '#EBC700' }}
+                    >
+                        チ
+                    </span>
+                  )}
                 </div>
             </div>
         </div>
